@@ -24,7 +24,7 @@
 
 		function showImage(){
 			var canvas = document.getElementById("myCanvas");
-			img1.src = "Imgs/" + Imgs[idx%8];
+			img1.src = "../static/imgs/" + Imgs[idx%8];
 			drawImage(img1);
 			setTimeout(hideImage,3000);
 		}
