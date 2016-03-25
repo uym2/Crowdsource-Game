@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>The Imgame 2016</title>
+ 
+ 
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+    <script src="../static/js/jquery-1.12.2.js"></script>
+    <script src="../static/js/game1.js"> </script>
+</head>
+ 
+<body onkeypress="keyHandler(event)">
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="/">Home</a>
+                    </li>
+                    <li role="presentation"><a href="showSignIn">Sign In</a>
+                    </li>
+                    <li role="presentation"><a href="showSignUp">Sign Up</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">The Imgame 2016</h3>
+        </div>
+	<canvas onmousedown="mouseHandler(event)" id="myCanvas" width="695" height="400" style="border:1px solid #d3d3d3;"> </canvas>
+	<button id="btnSignIn" class="btn btn-lg btn-primary btn-block" onclick="nextImage()">Next</button>
+</body>
+</html>

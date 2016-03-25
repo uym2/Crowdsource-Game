@@ -1,12 +1,4 @@
-<!doctype html>
-<html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
-<body onkeypress="keyHandler(event)">
-	<canvas onmousedown="mouseHandler(event)" id="myCanvas" width="1000" height="500" style="border:1px solid #d3d3d3;"> </canvas>
-	<script>
-		var iniPos;
+var iniPos;
 		var finalPos;
 		var interval;
 		var img1 = new Image();
@@ -15,25 +7,25 @@
 		var src2 = "http://img02.deviantart.net/5f01/i/2010/023/1/8/blank_paper_by_montroytana.jpg";
 		var idx = 0;
 		var iniMouse = true;
-
 		function keyHandler(event){
 			if (event.keyCode == 13) {
 				showImage();
 			}
 		}
-
+		function nextImage(){
+			idx = idx + 1;
+			showImage();
+		}
 		function showImage(){
 			var canvas = document.getElementById("myCanvas");
 			img1.src = "../static/imgs/" + Imgs[idx%8];
 			drawImage(img1);
 			setTimeout(hideImage,3000);
 		}
-
 		function hideImage(){
 			img2.src = src2;
 			drawImage(img2);
 		}
-
 		function drawImage(img){
 			var canvas = document.getElementById("myCanvas");
 			var ctx = canvas.getContext("2d");
@@ -51,7 +43,6 @@
 			ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
 			ctx.fillRect(iniPos.x,iniPos.y,w,h);
 		}
-
 		function mouseHandler(event){
 			if (iniMouse){
 				iniRect(event);
@@ -93,6 +84,3 @@
 	          y: evt.clientY - rect.top
         	}
       }
-	</script>
-</body>
-</html>
