@@ -12,7 +12,7 @@
     
 </head>
  
-<body onkeypress="keyHandler(event)">
+<body>
     <div class="container">
         <div class="header">
             <nav>
@@ -27,8 +27,10 @@
             </nav>
             <h3 class="text-muted">The Imgame 2016</h3>
         </div>
-	<canvas onmousedown="mouseHandler(event)" id="myCanvas" width="695" height="400" style="border:1px solid #d3d3d3;"> </canvas>
-	<button id="btnSignIn" class="btn btn-lg btn-primary btn-block" onclick="nextImage()">Next</button>
+    	<canvas id="myCanvas" width="695" height="400" style="border:1px solid #d3d3d3;"> </canvas>
+    	<button id="btnPlay">Start Game</button>  
+    	<button id="btnNext">Next</button>
+    </div>
 
 	<script src="../static/js/jquery-1.12.2.js"></script>
     <script src="../static/js/game1.js"> </script>
