@@ -8,7 +8,7 @@ mysql = MySQL()
 
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'UyNh4eve@6514'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'UyenMai1510'
 app.config['MYSQL_DATABASE_DB'] = 'bucketlist'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
@@ -93,10 +93,9 @@ def logout():
     session.pop('user',None)
     return redirect('/')
 
-
-@app.route('/launchGame1')
-def launchGame1():
-    return render_template('launchGame1.html')
+@app.route('/playGame1')
+def playGame1():
+    return render_template('playGame1.html')
 
 
 @app.route('/showAddWish')
@@ -157,4 +156,4 @@ def getWish():
         return render_template('error.html', error = str(e))
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(port=5002)

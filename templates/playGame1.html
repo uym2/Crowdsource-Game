@@ -6,9 +6,10 @@
  
  
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
- 
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-
+    <script src="../static/js/jquery-1.12.2.js"></script>
+    <script src="../static/js/game1.js"> </script>
+    <script src="../static/js/jcanvas.min.js"></script>
     
 </head>
  
@@ -19,20 +20,17 @@
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation"><a href="/">Home</a>
                     </li>
-                    <li role="presentation"><a href="showSignIn">Sign In</a>
+                    <li role="presentation"><a href="/showSignIn">Sign In</a>
                     </li>
-                    <li role="presentation"><a href="showSignUp">Sign Up</a>
+                    <li role="presentation"><a href="/showSignUp">Sign Up</a>
                     </li>
                 </ul>
             </nav>
             <h3 class="text-muted">The Imgame 2016</h3>
         </div>
-    	<canvas id="myCanvas" width="695" height="400" style="border:1px solid #d3d3d3;"> </canvas>
-    	<button id="btnPlay">Start Game</button>  
+    	<canvas id="myCanvas" width="695" height="400"></canvas>
+    	<!-- button id="btnPlay">Start Game</button -->  
     	<button id="btnNext">Next</button>
     </div>
-
-	<script src="../static/js/jquery-1.12.2.js"></script>
-    <script src="../static/js/game1.js"> </script>
 </body>
 </html>
