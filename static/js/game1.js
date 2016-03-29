@@ -1,17 +1,12 @@
 Imgs = ["Img1.jpg","Img2.jpg","Img3.jpg","Img4.jpg"];
 idx = 0;
 
-$('#btnNext').click(function(){
-	idx = idx+1;
-	showImage();
-	console.log(idx);
-});
-
 // onload
+/*
 $(window).load(function(){
 	showImage();
 });
-
+*/
 function showImage(){
 	$('canvas').clearCanvas();
 	$('canvas').drawImage({
@@ -23,3 +18,12 @@ function showImage(){
 		cropFromCenter: false
 	});
 }
+
+$(document).ready(function(){
+	showImage();
+	$('#btnNext').click(function(){
+		idx = idx+1;
+		showImage();
+		console.log(idx);
+	});
+});
