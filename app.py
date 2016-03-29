@@ -93,11 +93,6 @@ def logout():
     session.pop('user',None)
     return redirect('/')
 
-
-@app.route('/launchGame1')
-def launchGame1():
-    return render_template('launchGame1.html')
-
 @app.route('/playGame1')
 def playGame1():
     return render_template('playGame1.html')
