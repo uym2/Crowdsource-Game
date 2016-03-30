@@ -11,23 +11,10 @@ var currImg = function() {
 	};
 var img = new Image();
 
-$(window).load(function(){
-	var canvas = document.getElementById("myCanvas");
-	setTimeout(playImage,0.1);
-	//playImage();
-	$('#btnNext').click(function(){
-		idx = idx+1;
-		iniMouse = 0;
-		playImage();
-	});
-	$('canvas').mousedown(function(){
-		mouseHandler(window.event);
-	})
-
 	function showImage(imgSource){
 		$('canvas').clearCanvas();
 		img.src = imgSource;
-		//var canvas = document.getElementById("myCanvas");
+		var canvas = document.getElementById("myCanvas");
 		canvas.width = img.width;
 		canvas.height = img.height;
 		//var canvas = document.getElementById("myCanvas");
@@ -74,6 +61,7 @@ $(window).load(function(){
 		h = finalPos.y - iniPos.y;	
 		//ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
 		//ctx.fillRect(iniPos.x,iniPos.y,w,h);
+		var canvas = document.getElementById("myCanvas");
 		var ctx = canvas.getContext("2d");
 		ctx.beginPath();	
 		ctx.rect(iniPos.x,iniPos.y,w,h);
@@ -107,6 +95,7 @@ $(window).load(function(){
 
 		$('canvas').clearCanvas();
 		showImage(currImg());
+		var canvas = document.getElementById("myCanvas");
 		var ctx = canvas.getContext("2d");
 		ctx.beginPath();	
 		ctx.rect(iniPos.x,iniPos.y,w,h);
@@ -138,6 +127,7 @@ $(window).load(function(){
 
 		$('canvas').clearCanvas();
 		showImage(currImg());
+		var canvas = document.getElementById("myCanvas");
 		var ctx = canvas.getContext("2d");
 		ctx.beginPath();	
 		ctx.rect(iniPos.x,iniPos.y,w,h);
@@ -165,6 +155,7 @@ $(window).load(function(){
 
 		w = finalPos.x - iniPos.x;
 		h = finalPos.y - iniPos.y;
+		var canvas = document.getElementById("myCanvas");
 		var ctx = canvas.getContext("2d");
 		ctx.beginPath();	
 		ctx.rect(iniPos.x,iniPos.y,w,h);
@@ -173,12 +164,25 @@ $(window).load(function(){
 		iniMouse = iniMouse + 1;
 	}
 	function getMousePos(evt) {
+		var canvas = document.getElementById("myCanvas");
 		var rect = canvas.getBoundingClientRect();
 	    return {
 	      x: evt.clientX - rect.left,
 	      y: evt.clientY - rect.top
 		}
 	}
+
+$(window).load(function(){
+	setTimeout(playImage,0.1);
+	//playImage();
+	$('#btnNext').click(function(){
+		idx = idx+1;
+		iniMouse = 0;
+		playImage();
+	});
+	$('canvas').mousedown(function(){
+		mouseHandler(window.event);
+	})
 });
 
 
