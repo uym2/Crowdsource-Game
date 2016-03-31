@@ -1,6 +1,7 @@
 from flask import Flask, render_template, json, request, redirect, session
 from flask.ext.mysql import MySQL
 from werkzeug import generate_password_hash, check_password_hash
+import random
 
 app = Flask(__name__)
 
@@ -154,6 +155,17 @@ def getWish():
             return render_template('error.html', error = 'Unauthorized Access')
     except Exception as e:
         return render_template('error.html', error = str(e))
+
+# @app.route('/getImg',method=['GET'])
+# def getImg():
+#     try:
+#         ID = random.randint(1,5);
+
+#         con = mysql.connect()
+#         cursor = con.cursor()
+#         cursor.callproc('sp_GetImgByID',(ID))
+#     except Exception as e:
+#         return render_template('error.html', error = str(e))
 
 if __name__ == "__main__":
     app.run(port=5002)

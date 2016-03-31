@@ -5,26 +5,37 @@ var iniPos;
 var finalPos;
 var iniMouse = 0;
 var offRange = 5; // allow 5 pixel around rectangle edges for adjustRect
-var adjustEdge = 'N'; // none
+var adjustDirection;
 var currImg = function() {
 		return "../static/imgs/" + Imgs[idx%4];
 	};
 var img = new Image();
+img.addEventListener("load", function() {
+	var canvas = document.getElementById("myCanvas");
+	canvas.width = img.width;
+	canvas.height = img.height;
+	var ctx = canvas.getContext("2d");
+	ctx.drawImage(img,0,0,canvas.width,canvas.height);
+});
+var imgCurrent = '';
 
 	function showImage(imgSource){
 		$('canvas').clearCanvas();
-		img.src = imgSource;
-		var canvas = document.getElementById("myCanvas");
-		canvas.width = img.width;
-		canvas.height = img.height;
-		//var canvas = document.getElementById("myCanvas");
-		var ctx = canvas.getContext("2d");
-		ctx.drawImage(img,0,0,canvas.width,canvas.height);
+		if (imgCurrent === imgSource) {
+			var canvas = document.getElementById("myCanvas");
+			canvas.width = img.width;
+			canvas.height = img.height;
+			var ctx = canvas.getContext("2d");
+			ctx.drawImage(img,0,0,canvas.width,canvas.height);
+		} else {
+			img.src = imgSource;
+		}
+		imgCurrent = imgSource;
 	}
 
 	function hideImage(){
-		//showImage(blank);
 		$('canvas').clearCanvas();
+		$('canvas').on("mousedown",mouseHandler);
 	}
 
 	function playImage(){
@@ -53,14 +64,11 @@ var img = new Image();
 	}
 
 	var drawRect = function(){
-		//ctx.clearRect(0,0,ctx.width,ctx.height);
-		//showImage(blank);
 		$('canvas').clearCanvas();
 		finalPos = getMousePos(window.event);
 		w = finalPos.x - iniPos.x;
 		h = finalPos.y - iniPos.y;	
-		//ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
-		//ctx.fillRect(iniPos.x,iniPos.y,w,h);
+		
 		var canvas = document.getElementById("myCanvas");
 		var ctx = canvas.getContext("2d");
 		ctx.beginPath();	
@@ -71,21 +79,35 @@ var img = new Image();
 
 	function iniAdjustRect() {
 		var clickPos = getMousePos(window.event);
+		adjustDirection = '';
+		var nearLeft = clickPos.y >= iniPos.y &&
+						clickPos.y <= finalPos.y &&
+						 (Math.abs(clickPos.x-iniPos.x) <= offRange);
+		var nearUp = clickPos.x >= iniPos.x &&
+						clickPos.x <= finalPos.x &&
+						Math.abs(clickPos.y-iniPos.y) <= offRange;
+		var nearRight = clickPos.y >= iniPos.y &&
+						clickPos.y <= finalPos.y &&
+						Math.abs(clickPos.x-finalPos.x) <= offRange;
+		var nearDown = clickPos.x >= iniPos.x &&
+						clickPos.x <= finalPos.x &&
+						Math.abs(clickPos.y-finalPos.y) <= offRange;
 
-		if (Math.abs(clickPos.x-iniPos.x) <= offRange) {
-			adjustEdge = 'L';
-			iniPos.x = clickPos.x;
-		} else if (Math.abs(clickPos.y-iniPos.y) <= offRange) {
-			adjustEdge = 'U';
+
+		if (nearUp){
+			adjustDirection += 'U';
 			iniPos.y = clickPos.y;
-		} else if (Math.abs(clickPos.x-finalPos.x) <= offRange) {
-			adjustEdge = 'R';
-			finalPos.x = clickPos.x;
-		} else if (Math.abs(clickPos.y-finalPos.y) <= offRange){
-			adjustEdge = 'D';
+		} else if (nearDown){
+			adjustDirection += 'D';
 			finalPos.y = clickPos.y;
-		} else {
-			return;
+		}
+
+		if (nearLeft){
+			adjustDirection += 'L';
+			iniPos.x = clickPos.x;
+		} else if (nearRight){
+			adjustDirection += 'R';
+			finalPos.x = clickPos.x;
 		}
 
 		iniMouse = iniMouse + 1;
@@ -106,22 +128,25 @@ var img = new Image();
 
 	var adjustRect = function() {
 		var clickPos = getMousePos(window.event);
-		switch (adjustEdge){
-			case 'L':
-				iniPos.x = clickPos.x;
-				break;
-			case 'U':
-				iniPos.y = clickPos.y;
-				break;
-			case 'R':
-				finalPos.x = clickPos.x;
-				break;
-			case 'D':
-				finalPos.y = clickPos.y;
-				break;
-			default: 
-				return;
+		for(i=0; i<adjustDirection.length; i++){
+			switch (adjustDirection.charAt(i)){
+				case 'L':
+					iniPos.x = clickPos.x;
+					break;
+				case 'U':
+					iniPos.y = clickPos.y;
+					break;
+				case 'R':
+					finalPos.x = clickPos.x;
+					break;
+				case 'D':
+					finalPos.y = clickPos.y;
+					break;
+				default: 
+					return;
+			}	
 		}
+		
 		w = finalPos.x - iniPos.x;
 		h = finalPos.y - iniPos.y;	
 
@@ -136,7 +161,6 @@ var img = new Image();
 	}
 
 	function finishRect(){
-		//ctx.clearRect(0,0,ctx.width,ctx.height);
 		$('canvas').clearCanvas();
 		$('canvas').off("mousemove",drawRect);
 		showImage(currImg());
@@ -172,17 +196,16 @@ var img = new Image();
 		}
 	}
 
-$(window).load(function(){
-	setTimeout(playImage,0.1);
-	//playImage();
+// catch events
+$(document).ready(function(){
+	//setTimeout(playImage,0.1);
+	playImage();
 	$('#btnNext').click(function(){
 		idx = idx+1;
 		iniMouse = 0;
+		$('canvas').off("mousedown",mouseHandler);
 		playImage();
 	});
-	$('canvas').mousedown(function(){
-		mouseHandler(window.event);
-	})
 });
 
 
