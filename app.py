@@ -130,14 +130,14 @@ def addWish():
         cursor.close()
         conn.close()
 
-@app.route('/getWish')
+@app.route('/getWish',methods=['GET'])
 def getWish():
     try:
         if session.get('user'):
             _user = session.get('user')
  
-            con = mysql.connect()
-            cursor = con.cursor()
+            conn = mysql.connect()
+            cursor = conn.cursor()
             cursor.callproc('sp_GetWishByUser',(_user,))
             wishes = cursor.fetchall()
  
@@ -147,7 +147,8 @@ def getWish():
                         'Id': wish[0],
                         'Title': wish[1],
                         'Description': wish[2],
-                        'Date': wish[4]}
+                        'Date': wish[4]
+                }
                 wishes_dict.append(wish_dict)
  
             return json.dumps(wishes_dict)
@@ -155,17 +156,31 @@ def getWish():
             return render_template('error.html', error = 'Unauthorized Access')
     except Exception as e:
         return render_template('error.html', error = str(e))
+    finally:
+        cursor.close()
+        conn.close()
 
-# @app.route('/getImg',method=['GET'])
-# def getImg():
-#     try:
-#         ID = random.randint(1,5);
-
-#         con = mysql.connect()
-#         cursor = con.cursor()
-#         cursor.callproc('sp_GetImgByID',(ID))
-#     except Exception as e:
-#         return render_template('error.html', error = str(e))
+@app.route('/getImg',methods=['GET'])
+def getImg():
+    try:
+        #_id = random.randint(1,5);
+        _id = request.args.get('ID')
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.callproc('sp_GetImgByID',(_id,))
+        img = cursor.fetchall()
+        Id = img[0][0]
+        URL = img[0][1]
+        img_dict = {
+                'Id': Id,
+                'URL': URL
+        }
+        return json.dumps(img_dict)
+    except Exception as e:
+        return render_template('error.html', error = str(e))
+    finally:
+        cursor.close()
+        conn.close()
 
 if __name__ == "__main__":
     app.run(port=5002)
