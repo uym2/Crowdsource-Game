@@ -1,0 +1,3 @@
+LOAD DATA LOCAL INFILE 'C:\\Users\\uym2\\Crowdsource-Game\\static\\csv\\images.csv' INTO TABLE tbl_img
+	LINES TERMINATED BY '\r\n'
+    (img_url);

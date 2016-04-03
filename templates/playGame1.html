@@ -8,9 +8,11 @@
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
     <script src="../static/js/jquery-1.12.2.js"></script>
-    <script src="../static/js/game1.js"> </script>
     <script src="../static/js/jcanvas.min.js"></script>
-    
+    <!--script src="../static/js/pixi.js"></script>
+    <script src="../static/js/game1_addRenderer.js"></script>
+    <script src="../static/js/game1_pixi.js"></script-->    
+    <script src="../static/js/game1_ajax.js"></script>
 </head>
  
 <body>
@@ -31,10 +33,12 @@
         <div class="container">
             <button id="btnNext" class="btn btn-primary pull-right" style="margin-bottom: 20px;">Next</button>
         </div>
-        <div>
-    	   <canvas id="myCanvas" style="border:1px solid #d3d3d3;"></canvas>
+        <div id="canvas-div">
+            <canvas id="myCanvas"></canvas>
         </div>
-    	<!-- button id="btnPlay">Start Game</button -->  
+        <footer class="footer">
+                <p>&copy; MTU 2016</p>
+        </footer> 
     </div>
 </body>
 </html>
