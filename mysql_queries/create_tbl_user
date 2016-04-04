@@ -1,4 +1,4 @@
-CREATE TABLE tbl_user(
-user_id unsigned int NOT NULL AUTO_INCREMENT,
-user_username varchar(10),
-user_password varchar(15));
+CREATE TABLE `tbl_user`(
+`user_id` unsigned int NOT NULL AUTO_INCREMENT,
+`user_username` varchar(10),
+`user_password` varchar(15));
