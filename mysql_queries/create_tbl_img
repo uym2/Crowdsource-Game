@@ -1,3 +1,4 @@
 create table tbl_img(
-img_id INT,
-img_ava_id MEDIUMINT);
+img_id INT NOT NULL AUTO_INCREMENT,
+img_ava_id MEDIUMINT NOT NULL,
+PRIMARY KEY (img_id));
