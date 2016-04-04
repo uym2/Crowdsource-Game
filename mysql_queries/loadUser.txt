@@ -1,0 +1,2 @@
+LOAD DATA LOCAL INFILE '/home/uym2/mysite/static/csv/users.csv' INTO TABLE tbl_user FIELDS TERMINATED BY ',' LINES TERMINATED BY '\r\n'(user_
+username,user_password);

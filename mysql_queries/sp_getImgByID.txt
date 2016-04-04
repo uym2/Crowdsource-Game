@@ -1,0 +1,9 @@
+DELIMITER $$
+CREATE PROCEDURE `sp_getImgByID`(
+	IN p_imgID bigint
+)
+BEGIN
+	SELECT * FROM tbl_img WHERE img_id=p_imgID;
+END$$
+
+DELIMITER ;

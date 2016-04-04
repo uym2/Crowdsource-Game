@@ -1,0 +1,4 @@
+LOAD DATA LOCAL INFILE '/home/uym2/mysite/static/csv/images.csv' INTO TABLE tbl_img
+	LINES TERMINATED BY '\r\n'
+	FIELDS TERMINATED BY ','
+    (img_url);

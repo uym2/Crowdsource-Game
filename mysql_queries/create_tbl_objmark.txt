@@ -1,0 +1,10 @@
+ create table tbl_objMark (
+ `obj_id` int(11) NOT NULL AUTO_INCREMENT,
+ `user_id` int(11) DEFAULT NULL,
+ `img_id` int(11) NOT NULL,
+ `topleft_x` int NOT NULL,
+ `topleft_y` int NOT NULL,
+ `bottomright_x` int NOT NULL,
+ `bottomright_y` int NOT NULL,
+ PRIMARY KEY (`obj_id`)
+ );

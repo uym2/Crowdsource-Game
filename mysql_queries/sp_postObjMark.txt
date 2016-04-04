@@ -1,0 +1,33 @@
+USE `BucketList`;
+DROP procedure IF EXISTS `BucketList`.`sp_postObjMark`;
+
+DELIMITER $$
+USE `BucketList`$$
+CREATE PROCEDURE `sp_postObjMark`(
+	IN p_userID bigint,
+	IN p_imgID bigint,
+	IN p_topleftX int,
+	IN p_topleftY int,
+	IN p_bottomrightX int,
+	IN p_bottomrightY int
+)
+BEGIN
+	insert into tbl_objmark(
+		user_id,
+		img_id,
+		topleft_x,
+		topleft_y,
+		bottomright_x,
+		bottomright_y
+	)
+	values(
+		p_userID,
+		p_imgID,
+		p_topleftX,
+		p_topleftY,
+		p_bottomrightX,
+		p_bottomrightY
+	);
+END$$
+
+DELIMITER;
