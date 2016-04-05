@@ -1,3 +1,1 @@
-LOAD DATA LOCAL INFILE '/home/uym2/mysite/static/csv/AVA_ID_AvgAbove6.csv' INTO TABLE tbl_img
-	LINES TERMINATED BY '\r\n'
-    (img_ava_id);
+LOAD DATA LOCAL INFILE '/home/uym2/mysite/static/csv/AVA_ID_AvgAbove6.csv' INTO TABLE tbl_img (img_ava_id);
