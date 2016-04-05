@@ -1,8 +1,7 @@
-USE `BucketList`;
+USE uym2$theimgame2016;
 DROP procedure IF EXISTS `BucketList`.`sp_postObjMark`;
 
 DELIMITER $$
-USE `BucketList`$$
 CREATE PROCEDURE `sp_postObjMark`(
 	IN p_userID bigint,
 	IN p_imgID bigint,
