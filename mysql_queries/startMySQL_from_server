@@ -1,0 +1,1 @@
+mysql -u uym2 -h uym2.mysql.pythonanywhere-services.com --local-infile=1 -p
