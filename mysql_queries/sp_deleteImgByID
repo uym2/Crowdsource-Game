@@ -1,0 +1,9 @@
+DELIMITER $$
+CREATE PROCEDURE `sp_deleteImgByID`(
+	IN p_imgID int
+)
+BEGIN
+	UPDATE tbl_img SET mark_deleted = 1 WHERE img_id=p_imgID;
+END$$
+
+DELIMITER ;
