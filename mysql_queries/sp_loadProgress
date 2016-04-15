@@ -1,0 +1,9 @@
+DELIMITER $$
+CREATE PROCEDURE `sp_loadProgress`(
+	IN p_userID int
+)
+BEGIN
+	SELECT curr_img FROM tbl_user WHERE user_id=p_userID;
+END$$
+
+DELIMITER ;
