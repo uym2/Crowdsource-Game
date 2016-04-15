@@ -1,0 +1,10 @@
+DELIMITER $$
+CREATE PROCEDURE `sp_storeProgress`(
+	IN p_userID int,
+	   p_imgID int
+)
+BEGIN
+	UPDATE tbl_user SET curr_img = p_imgID WHERE user_id = p_userID;
+END$$
+
+DELIMITER ;
