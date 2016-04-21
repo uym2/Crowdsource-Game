@@ -1,6 +1,6 @@
 DELIMITER $$
 CREATE PROCEDURE `sp_deleteObj`(
-	IN p_imgID int
+	IN p_imgID int,
 	   p_userID int
 )
 BEGIN
