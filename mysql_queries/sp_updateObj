@@ -1,0 +1,17 @@
+DROP PROCEDURE IF EXISTS sp_updateObjMark;
+
+DELIMITER $$
+CREATE PROCEDURE `sp_updateObjMark`(
+	IN p_objID int,
+	   p_topleftX int, 
+	   p_topleftY int, 
+	   p_bottomrightX int,
+	   p_bottomrightY int
+)
+BEGIN
+	UPDATE tbl_objmark
+	SET topleft_x = p_topleftX, topleft_y = p_topleftY, bottomright_x = p_bottomrightX, bottomright_y = p_bottomrightY
+	WHERE obj_id = p_objID;
+END$$
+
+DELIMITER ;
