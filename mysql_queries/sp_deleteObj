@@ -1,0 +1,10 @@
+DELIMITER $$
+CREATE PROCEDURE `sp_deleteObj`(
+	IN p_imgID int
+	   p_userID int
+)
+BEGIN
+	DELETE FROM tbl_img WHERE img_id=p_imgID AND user_id=p_userID;
+END$$
+
+DELIMITER ;
