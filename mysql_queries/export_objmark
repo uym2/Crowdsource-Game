@@ -1,4 +1,3 @@
-SELECT img_id,user_id, topleft_x,topleft_y,bottomright_x,bottomright_y
+echo "SELECT img_id,user_id, topleft_x,topleft_y,bottomright_x,bottomright_y
 FROM tbl_objmark 
-ORDER BY img_id,user_id,topleft_x,topleft_y,bottomright_x,bottomright_y
-INTO OUTFILE '/home/uym2/mysite/objmark.csv';
+ORDER BY img_id,user_id,topleft_x,topleft_y,bottomright_x,bottomright_y" | mysql -u uym2 -p -h uym2.mysql.pythonanywhere-services.com 'uym2$theimgame2016' > /home/uym2/mysite/objmark.csv
