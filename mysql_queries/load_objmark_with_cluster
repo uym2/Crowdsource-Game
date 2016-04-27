@@ -1,0 +1,2 @@
+LOAD DATA LOCAL INFILE '/home/uym2/mysite/static/csv/objmark_with_cluster.csv' INTO TABLE tbl_objmark 
+FIELDS TERMINATED BY ',' LINES TERMINATED BY '\r\n'(obj_id,img_id,user_id,topleft_x,topleft_y,bottomright_x,bottomright_y,centroid_id);
