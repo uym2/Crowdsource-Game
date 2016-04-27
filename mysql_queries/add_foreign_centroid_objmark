@@ -1,0 +1,3 @@
+ALTER TABLE tbl_objmark
+ADD FOREIGN KEY (centroid_id)
+REFERENCES tbl_centroid (centroid_id);
