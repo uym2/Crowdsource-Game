@@ -1,0 +1,8 @@
+ create table tbl_centroid (
+ `centroid_id` int NOT NULL AUTO_INCREMENT,
+ `topleft_x` SMALLINT NOT NULL,
+ `topleft_y` SMALLINT NOT NULL,
+ `bottomright_x` SMALLINT NOT NULL,
+ `bottomright_y` SMALLINT NOT NULL,
+ PRIMARY KEY (`centroid_id`)
+ );
