@@ -6,5 +6,6 @@
  `topleft_y` SMALLINT NOT NULL,
  `bottomright_x` SMALLINT NOT NULL,
  `bottomright_y` SMALLINT NOT NULL,
+ `centroid_id` int,
  PRIMARY KEY (`obj_id`)
  );
