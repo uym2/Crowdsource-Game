@@ -1,2 +1,2 @@
-LOAD DATA LOCAL INFILE '/home/uym2/mysite/static/csv/centroids.csv' INTO TABLE tbl_objmark 
-FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'centroid_id,topleft_x,topleft_y,bottomright_x,bottomright_y);
+LOAD DATA LOCAL INFILE '/home/uym2/mysite/static/csv/centroids.csv' INTO TABLE tbl_centroid 
+FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (centroid_id,topleft_x,topleft_y,bottomright_x,bottomright_y);
