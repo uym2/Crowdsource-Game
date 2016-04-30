@@ -8,27 +8,27 @@ CREATE PROCEDURE `sp_postObjMark`(
 	IN p_topleftX int,
 	IN p_topleftY int,
 	IN p_bottomrightX int,
-	IN p_bottomrightY int
+	IN p_bottomrightY int,
+	IN p_trustFactor float
 )
 BEGIN
-	DELETE FROM tbl_objmark
-	WHERE img_id = p_imgID AND user_id = p_userID;
-	
 	INSERT INTO tbl_objmark(
 	user_id,
 	img_id,
 	topleft_x,
 	topleft_y,
 	bottomright_x,
-	bottomright_y
+	bottomright_y,
+	trust_factor
 	)
 	values(
-		p_userID,
-		p_imgID,
-		p_topleftX,
-		p_topleftY,
-		p_bottomrightX,
-		p_bottomrightY
+	p_userID,
+	p_imgID,
+	p_topleftX,
+	p_topleftY,
+	p_bottomrightX,
+	p_bottomrightY,
+	p_trustFactor
 	);
 END$$
 
