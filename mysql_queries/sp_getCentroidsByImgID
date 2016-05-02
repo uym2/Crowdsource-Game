@@ -3,9 +3,9 @@ CREATE PROCEDURE `sp_getCentroidsByImgID`(
 	IN p_imgID int
 )
 BEGIN
-	SELECT C.centroid_id,C.topleft_x,C.topleft_y,C.bottomright_x,C.bottomright_y
-FROM tbl_centroid C, tbl_objmark M
-WHERE M.img_id=p_imgID AND M.centroid_id = C.centroid_id;
-END$$
+	SELECT DISTINCT C.centroid_id,C.topleft_x,C.topleft_y,C.bottomright_x,C.bottomright_y
+	FROM tbl_centroid C, tbl_objmark M
+	WHERE M.img_id=p_imgID AND M.centroid_id = C.centroid_id;
+	END$$
 
 DELIMITER ;
