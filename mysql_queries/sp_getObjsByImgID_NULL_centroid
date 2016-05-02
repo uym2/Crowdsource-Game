@@ -1,0 +1,12 @@
+DELIMITER $$
+CREATE PROCEDURE `sp_getObjsByImgID_NULL_centroid`(
+	IN p_imgID int,
+	   p_centroidID int
+)
+BEGIN
+	SELECT *
+	FROM tbl_objmark
+	WHERE img_id=p_imgID AND centroid_id IS NULL;
+	END$$
+
+DELIMITER ;
