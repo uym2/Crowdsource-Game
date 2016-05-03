@@ -4,25 +4,15 @@ DROP procedure IF EXISTS `sp_addCentroid`;
 DELIMITER $$
 CREATE PROCEDURE `sp_addCentroid`(
 	IN p_topleftX int,
-	IN p_topleftY int,
-	IN p_bottomrightX int,
-	IN p_bottomrightY int
+	   p_topleftY int,
+	   p_bottomrightX int,
+	   p_bottomrightY int
 )
 BEGIN
 	INSERT INTO tbl_centroid(
-	topleft_x,
-	topleft_y,
-	bottomright_x,
-	bottomright_y
-	)
-	VALUES(
-	p_topleftX,
-	p_topleftY,
-	p_bottomrightX,
-	p_bottomrightY
-	);
-	SELECT LAST_INSERT_ID()
-	FROM tbl_centroid;
+	topleft_x,topleft_y,bottomright_x,bottomright_y)
+	VALUES(p_topleftX,p_topleftY,p_bottomrightX,p_bottomrightY);
+	SELECT LAST_INSERT_ID() FROM tbl_centroid;
 END$$
 
 DELIMITER ;
