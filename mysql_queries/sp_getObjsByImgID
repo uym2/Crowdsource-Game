@@ -1,0 +1,13 @@
+DROP PROCEDURE IF EXISTS sp_getObjsByImgID;
+
+DELIMITER $$
+CREATE PROCEDURE `sp_getObjsByImgID`(
+	IN p_imgID int
+)
+BEGIN
+	SELECT obj_id, topleft_x, topleft_y, bottomright_x, bottomright_y
+	FROM tbl_objmark
+	WHERE img_id=p_imgID;
+END$$
+
+DELIMITER ;
