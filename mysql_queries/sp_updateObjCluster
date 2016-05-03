@@ -1,0 +1,14 @@
+DROP PROCEDURE IF EXISTS sp_updateObjCluster;
+
+DELIMITER $$
+CREATE PROCEDURE `sp_updateObjCluster`(
+	IN p_objID int,
+	   p_centroidID int
+)
+BEGIN
+	UPDATE tbl_objmark
+	SET centroid_id = p_centroidID
+	WHERE obj_id = p_objID;
+END$$
+
+DELIMITER ;
