@@ -1,0 +1,17 @@
+DROP PROCEDURE IF EXISTS sp_updateCentroid;
+
+DELIMITER $$
+CREATE PROCEDURE `sp_updateCentroid`(
+	IN p_centroidID int,
+	   p_topleftX int,
+	   p_topleftY int,
+	   p_bottomrightX int,
+	   p_bottomrightY int
+)
+BEGIN
+	UPDATE tbl_centroid
+	SET topleft_x = p_topleftX,topleft_y = p_topleftY,bottomright_x = p_bottomrightX,bottomright_y = p_bottomrightY
+	WHERE centroid_id = p_centroidID;
+END$$
+
+DELIMITER ;
