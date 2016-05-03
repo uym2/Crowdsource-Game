@@ -12,7 +12,6 @@ BEGIN
 	INSERT INTO tbl_centroid(
 	topleft_x,topleft_y,bottomright_x,bottomright_y)
 	VALUES(p_topleftX,p_topleftY,p_bottomrightX,p_bottomrightY);
-	SELECT LAST_INSERT_ID() FROM tbl_centroid;
 END$$
 
 DELIMITER ;
