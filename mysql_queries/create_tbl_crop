@@ -1,0 +1,10 @@
+create table tbl_crop (
+ `crop_id` int NOT NULL AUTO_INCREMENT,
+ `img_id` int NOT NULL,
+ `topleft_x` SMALLINT NOT NULL,
+ `topleft_y` SMALLINT NOT NULL,
+ `bottomright_x` SMALLINT NOT NULL,
+ `bottomright_y` SMALLINT NOT NULL,
+ `rule_id` TINYINT,
+ PRIMARY KEY (`crop_id`)
+ );
