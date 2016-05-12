@@ -1,0 +1,5 @@
+echo "SELECT centroid_id,img_id,avg(topleft_x),avg(topleft_y),avg(bottomright_x),avg(bottomright_y)
+FROM tbl_objmark 
+WHERE centroid_id  IS NOT NULL
+GROUP BY centroid_id,img_id
+ORDER BY centroid_id" | mysql -u uym2 -p -h uym2.mysql.pythonanywhere-services.com 'uym2$theimgame2016' > /home/uym2/mysite/static/csv/centroids.csv
