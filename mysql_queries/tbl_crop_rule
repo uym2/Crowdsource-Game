@@ -1,0 +1,4 @@
+create table tbl_crop_rule(
+rule_id INT NOT NULL AUTO_INCREMENT,
+rule_name VARCHAR(25),
+PRIMARY KEY (rule_id));
