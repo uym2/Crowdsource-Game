@@ -1,0 +1,7 @@
+ALTER TABLE tbl_crop
+ADD FOREIGN KEY (rule_id)
+REFERENCES tbl_crop_rule (rule_id);
+
+ALTER TABLE tbl_crop
+ADD FOREIGN KEY (img_id)
+REFERENCES tbl_crop_rule (img_id);
