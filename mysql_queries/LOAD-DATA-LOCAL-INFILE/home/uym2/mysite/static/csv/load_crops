@@ -1,6 +1,5 @@
 LOAD DATA LOCAL INFILE '/home/uym2/mysite/static/csv/crops.csv' INTO TABLE tbl_crop
-FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\r\n'(img_id,topleft_x,topleft_y,bottomright_x,bottomright_y,rule_id,crop_ratio,@dummy,@dummy,@dummy)
-IGNORE 1 LINES;
+FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 LINES (img_id,topleft_x,topleft_y,bottomright_x,bottomright_y,rule_id,crop_ratio,@dummy,@dummy,@dummy);
 
 LOAD DATA LOCAL INFILE '/home/uym2/mysite/static/csv/crops.csv' INTO TABLE tbl_crop_singleobj
-FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\r\n'(@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,centroid_id,centroid,salient_centroid_x,salient_centroid_y);
+FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 LINES (@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,centroid_id,salient_centroid_x,salient_centroid_y);
