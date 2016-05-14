@@ -1,0 +1,15 @@
+DROP PROCEDURE IF EXISTS `sp_getCropsByImgID`;
+
+DELIMITER $$
+
+CREATE PROCEDURE `sp_getCropsByImgID`(
+	IN p_imgID int
+)
+BEGIN
+	SELECT topleft_x, topleft_y, bottomright_x, bottomright_y, rule_id
+	FROM tbl_crop
+	WHERE img_id=p_imgID
+	ORDER BY rule_id;
+	END$$
+
+DELIMITER ;
