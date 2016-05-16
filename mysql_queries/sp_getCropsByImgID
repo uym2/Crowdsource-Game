@@ -13,3 +13,19 @@ BEGIN
 	END$$
 
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `sp_getCropsByImgID`;
+
+DELIMITER $$
+
+CREATE PROCEDURE `sp_getCropsByImgID`(
+	IN p_imgID int
+)
+BEGIN
+	SELECT c.topleft_x, c.topleft_y, c.bottomright_x, c.bottomright_y, c.rule_id
+	FROM tbl_crop c, tbl_crop_singleobj s
+	WHERE c.img_id=p_imgID AND c.crop_id = s.crop_id AND (SELECT count(*) FROM tbl_objmark m WHERE m.centroid_id = s.centroid_id)>1
+	ORDER BY c.rule_id;
+	END$$
+
+DELIMITER ;
