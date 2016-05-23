@@ -8,7 +8,7 @@ CREATE PROCEDURE `sp_getCentroidsByImgID`(
 BEGIN
 	SELECT DISTINCT centroid_id, AVG(topleft_x),AVG(topleft_y),AVG(bottomright_x),AVG(bottomright_y)
 	FROM tbl_objmark
-	WHERE img_id=p_imgID
+	WHERE img_id=p_imgID AND centroid_id IS NOT NULL
 	GROUP BY centroid_id;
 	END$$
 
